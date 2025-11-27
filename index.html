@@ -3,20 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visor de Documentos</title>
+  <title>Actualización de políticas 2025</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f9fafb;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
-    h1 { text-align: center; }
+    header {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 10px 20px;
+      border-bottom: 4px solid orange; /* línea naranja debajo del título */
+    }
+    header img {
+      height: 50px; /* tamaño del logo */
+      margin-right: 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #111827;
+    }
     .buttons {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-bottom: 20px;
+      margin: 20px;
     }
     button {
       padding: 10px 20px;
@@ -36,14 +51,19 @@
   </style>
 </head>
 <body>
-  <h1>Visor de Documentos</h1>
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1>Actualización de políticas 2025</h1>
+  </header>
+
   <div class="buttons">
-    <button onclick="mostrar('LCZ Corp -  Mantenimiento de vehículos & Autoconsumo.pdf')">Mantenimiento y autoconsumo</button>
-    <button onclick="mostrar('LCZ Corp - Política de Caja Chica.pdf')">Caja chica</button>
-    <button onclick="mostrar('LCZ Corp - Política de carga de combustibles.pdf')">Carga de combustible</button>    
-    <button onclick="mostrar('LCZ Corp - Politica de compra de bienes y servicios.pdf')">Compra de bienes y servicios</button>
-    <button onclick="mostrar('LCZ Corp - Política de Viaticos Regional.pdf')">Viaticos</button>
+    <button onclick="mostrar('mantenimiento-vehiculos-autoconsumo.pdf')">Mantenimiento y autoconsumo</button>
+    <button onclick="mostrar('politica-caja-chica.pdf')">Caja chica</button>
+    <button onclick="mostrar('politica-combustibles.pdf')">Carga de combustible</button>    
+    <button onclick="mostrar('politica-bienes-servicios.pdf')">Compra de bienes y servicios</button>
+    <button onclick="mostrar('politica-viaticos.pdf')">Viáticos</button>
   </div>
+
   <iframe id="visor" src="" title="Visor de documentos"></iframe>
 
   <script>
@@ -53,4 +73,3 @@
   </script>
 </body>
 </html>
-
