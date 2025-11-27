@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Documentos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { text-align: center; }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #1e40af; }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visor de Documentos</h1>
+  <div class="buttons">
+    <button onclick="mostrar('LCZ Corp -  Mantenimiento de vehículos & Autoconsumo.pdf')">Documento 1</button>
+    <button onclick="mostrar('LCZ Corp - Política de Caja Chica.pdf')">Documento 2</button>
+    <button onclick="mostrar('LCZ Corp - Política de carga de combustibles.pdf')">Documento 3</button>
+  </div>
+  <iframe id="visor" src="" title="Visor de documentos"></iframe>
+
+  <script>
+    function mostrar(archivo) {
+      document.getElementById('visor').src = archivo;
+    }
+  </script>
+</body>
+</html>
