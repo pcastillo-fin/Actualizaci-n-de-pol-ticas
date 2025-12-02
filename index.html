@@ -45,22 +45,29 @@
       color: #1e40af;
     }
     .sidebar button {
-      padding: 8px;
-      margin-right: 5px;
+      width: 100%;
+      padding: 10px;
       background: #2563eb;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      margin-bottom: 10px; /* separación entre botones */
     }
     .sidebar button:hover {
       background: #1e40af;
     }
-    .sidebar ul {
+    .dropdown-container {
+      display: none; /* oculto por defecto */
+      margin-top: 5px;
+    }
+    .dropdown-container ul {
       list-style: none;
       padding: 0;
     }
-    .sidebar li {
+    .dropdown-container li {
       margin: 8px 0;
       cursor: pointer;
       padding: 8px;
@@ -68,7 +75,7 @@
       color: white;
       border-radius: 6px;
     }
-    .sidebar li:hover {
+    .dropdown-container li:hover {
       background: #1e40af;
     }
     .content {
@@ -91,54 +98,20 @@
 
   <div class="sidebar">
     <h2>Sección 2025</h2>
-    
-    <!-- Botones justo debajo del título -->
-    <div style="margin-bottom: 15px;">
-      <button onclick="cambiarVersion('es')">Versión en Español</button>
-      <button onclick="cambiarVersion('en')">Versión en Inglés</button>
+
+    <!-- Botones de idioma -->
+    <button onclick="toggleDropdown('es')">Versión en Español ▼</button>
+    <div class="dropdown-container" id="dropdown-es">
+      <ul>
+        <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
+        <li onclick="mostrar('cajac.pdf')">Caja chica</li>
+        <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
+        <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
+        <li onclick="mostrar('viat.pdf')">Viáticos</li>
+      </ul>
     </div>
 
-    <!-- Lista de documentos -->
-    <ul id="lista-documentos">
-      <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
-      <li onclick="mostrar('cajac.pdf')">Caja chica</li>
-      <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
-      <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
-      <li onclick="mostrar('viat.pdf')">Viáticos</li>
-    </ul>
-  </div>
-
-  <div class="content">
-    <iframe id="visor" src="" title="Visor de documentos"></iframe>
-  </div>
-
-  <script>
-    function mostrar(archivo) {
-      document.getElementById('visor').src = archivo;
-    }
-
-    function cambiarVersion(idioma) {
-      const lista = document.getElementById('lista-documentos');
-      lista.innerHTML = "";
-
-      if (idioma === 'es') {
-        lista.innerHTML = `
-          <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
-          <li onclick="mostrar('cajac.pdf')">Caja chica</li>
-          <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
-          <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
-          <li onclick="mostrar('viat.pdf')">Viáticos</li>
-        `;
-      } else if (idioma === 'en') {
-        lista.innerHTML = `
-          <li onclick="mostrar('maint_en.pdf')">Maintenance and self-consumption</li>
-          <li onclick="mostrar('pettycash_en.pdf')">Petty cash</li>
-          <li onclick="mostrar('fuel_en.pdf')">Fuel loading</li>
-          <li onclick="mostrar('goods_en.pdf')">Purchase of goods and services</li>
-          <li onclick="mostrar('travel_en.pdf')">Travel expenses</li>
-        `;
-      }
-    }
-  </script>
-</body>
-</html>
+    <button onclick="toggleDropdown('en')">Versión en Inglés ▼</button>
+    <div class="dropdown-container" id="dropdown-en">
+      <ul>
+        <li onclick="mostrar('maint_en.pdf')">Maintenance and self-consumption</li>
