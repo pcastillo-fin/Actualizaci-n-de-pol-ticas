@@ -1,53 +1,143 @@
-<div class="sidebar">
-  <h2>Sección 2025</h2>
-  
-  <!-- Botones para elegir idioma -->
-  <div style="margin-bottom: 15px;">
-    <button onclick="cambiarVersion('es')" style="padding:8px; margin-right:5px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer;">
-      Versión en Español
-    </button>
-    <button onclick="cambiarVersion('en')" style="padding:8px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer;">
-      Versión en Inglés
-    </button>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualización de políticas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      display: flex;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 10px 20px;
+      border-bottom: 4px solid orange;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #111827;
+    }
+    .sidebar {
+      width: 250px;
+      background: #e5e7eb;
+      padding: 20px;
+      margin-top: 80px; /* espacio para el header */
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #1e40af;
+    }
+    .sidebar button {
+      padding: 8px;
+      margin-right: 5px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .sidebar button:hover {
+      background: #1e40af;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin: 8px 0;
+      cursor: pointer;
+      padding: 8px;
+      background: #2563eb;
+      color: white;
+      border-radius: 6px;
+    }
+    .sidebar li:hover {
+      background: #1e40af;
+    }
+    .content {
+      flex: 1;
+      padding: 100px 20px 20px 20px; /* espacio para header */
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1>Actualización de políticas</h1>
+  </header>
+
+  <div class="sidebar">
+    <h2>Sección 2025</h2>
+    <!-- Botones de idioma -->
+    <div style="margin-bottom: 15px;">
+      <button onclick="cambiarVersion('es')">Versión en Español</button>
+      <button onclick="cambiarVersion('en')">Versión en Inglés</button>
+    </div>
+
+    <!-- Lista de documentos -->
+    <ul id="lista-documentos">
+      <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
+      <li onclick="mostrar('cajac.pdf')">Caja chica</li>
+      <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
+      <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
+      <li onclick="mostrar('viat.pdf')">Viáticos</li>
+    </ul>
   </div>
 
-  <!-- Lista de documentos -->
-  <ul id="lista-documentos">
-    <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
-    <li onclick="mostrar('cajac.pdf')">Caja chica</li>
-    <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
-    <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
-    <li onclick="mostrar('viat.pdf')">Viáticos</li>
-  </ul>
-</div>
+  <div class="content">
+    <iframe id="visor" src="" title="Visor de documentos"></iframe>
+  </div>
 
-<script>
-  // Función para mostrar documentos en el iframe
-  function mostrar(archivo) {
-    document.getElementById('visor').src = archivo;
-  }
-
-  // Función para cambiar entre versiones
-  function cambiarVersion(idioma) {
-    const lista = document.getElementById('lista-documentos');
-    lista.innerHTML = ""; // limpiar lista
-
-    if (idioma === 'es') {
-      lista.innerHTML = `
-        <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
-        <li onclick="mostrar('cajac.pdf')">Caja chica</li>
-        <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
-        <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
-        <li onclick="mostrar('viat.pdf')">Viáticos</li>
-      `;
-    } else if (idioma === 'en') {
-      lista.innerHTML = `
-        <li onclick="mostrar('maint_en.pdf')">Maintenance and self-consumption</li>
-        <li onclick="mostrar('pettycash_en.pdf')">Petty cash</li>
-        <li onclick="mostrar('fuel_en.pdf')">Fuel loading</li>
-        <li onclick="mostrar('goods_en.pdf')">Purchase of goods and services</li>
-        <li onclick="mostrar('travel_en.pdf')">Travel expenses</li>
-      `;
+  <script>
+    function mostrar(archivo) {
+      document.getElementById('visor').src = archivo;
     }
-  }
-</script>
+
+    function cambiarVersion(idioma) {
+      const lista = document.getElementById('lista-documentos');
+      lista.innerHTML = "";
+
+      if (idioma === 'es') {
+        lista.innerHTML = `
+          <li onclick="mostrar('mant.pdf')">Mantenimiento y autoconsumo</li>
+          <li onclick="mostrar('cajac.pdf')">Caja chica</li>
+          <li onclick="mostrar('combu.pdf')">Carga de combustible</li>
+          <li onclick="mostrar('biene.pdf')">Compra de bienes y servicios</li>
+          <li onclick="mostrar('viat.pdf')">Viáticos</li>
+        `;
+      } else if (idioma === 'en') {
+        lista.innerHTML = `
+          <li onclick="mostrar('maint_en.pdf')">Maintenance and self-consumption</li>
+          <li onclick="mostrar('pettycash_en.pdf')">Petty cash</li>
+          <li onclick="mostrar('fuel_en.pdf')">Fuel loading</li>
+          <li onclick="mostrar('goods_en.pdf')">Purchase of goods and services</li>
+          <li onclick="mostrar('travel_en.pdf')">Travel expenses</li>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
